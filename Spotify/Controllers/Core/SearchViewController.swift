@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -111,7 +112,13 @@ extension SearchViewController: SearchResultsViewControllerDelegate {
     func didTapResult(_ result: SearchResult) {
         switch result {
         case .artist(let model):
-          break
+            guard let url = URL(string: model.external_urls["spotify"] ?? "") else {
+                return
+            }
+            // once you go ahead and created the url, you want to open the in app appview
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
+            
         case .album(let model):
           let vc = AlbumViewController(album: model)
             vc.navigationItem.largeTitleDisplayMode = .never
