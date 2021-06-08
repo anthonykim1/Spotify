@@ -55,6 +55,8 @@ class PlaylistViewController: UIViewController {
     }
     
     private var viewModels = [RecommendedTrackCellViewModel]()
+    private var tracks = [AudioTrack]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +78,7 @@ class PlaylistViewController: UIViewController {
                 switch result {
                 case .success(let model):
                     // RecommendedTrackCellViewModel
+                    self?.tracks = model.tracks.items.compactMap({ $0.track }) // self.track is now array of track that is now owned by the playlist
                     // set up view model for each of the tracks in this playlist
                     self?.viewModels = model.tracks.items.compactMap({
                         RecommendedTrackCellViewModel(name: $0.track.name,
@@ -155,13 +158,15 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        // play song
+        let index = indexPath.row
+        let track = tracks[index] // get the nth track at the index
+        PlaybackPresenter.shared.startPlayback(from: self, track: track)
     }
 }
 
 extension PlaylistViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func PlaylistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
-        // start play list play in queue
-        print("Playing all")
+        // we want to send collection of tracks to the player presenter
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
     }
 }
