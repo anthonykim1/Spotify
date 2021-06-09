@@ -15,6 +15,9 @@
 		4B32C17725FDD01100F2865C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B32C17625FDD01100F2865C /* HomeViewController.swift */; };
 		4B32C17C25FDD01200F2865C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B32C17B25FDD01200F2865C /* Assets.xcassets */; };
 		4B32C17F25FDD01200F2865C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B32C17D25FDD01200F2865C /* LaunchScreen.storyboard */; };
+		4B4370E9267070FD00821EDA /* LibraryPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4370E8267070FD00821EDA /* LibraryPlaylistsViewController.swift */; };
+		4B4370EB2670714600821EDA /* LibraryAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4370EA2670714600821EDA /* LibraryAlbumsViewController.swift */; };
+		4B4370ED267074E100821EDA /* LibraryToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4370EC267074E100821EDA /* LibraryToggleView.swift */; };
 		4B5B71DA266B405C00B22766 /* SearchResultDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B71D9266B405C00B22766 /* SearchResultDefaultTableViewCell.swift */; };
 		4B5B71DD266B425600B22766 /* SearchResultDefaultTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B71DC266B425600B22766 /* SearchResultDefaultTableViewCellViewModel.swift */; };
 		4B5B71E0266B454900B22766 /* SearchResultSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B71DF266B454900B22766 /* SearchResultSubtitleTableViewCell.swift */; };
@@ -77,6 +80,9 @@
 		4B32C17B25FDD01200F2865C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B32C17E25FDD01200F2865C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B32C18025FDD01200F2865C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B4370E8267070FD00821EDA /* LibraryPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistsViewController.swift; sourceTree = "<group>"; };
+		4B4370EA2670714600821EDA /* LibraryAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAlbumsViewController.swift; sourceTree = "<group>"; };
+		4B4370EC267074E100821EDA /* LibraryToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryToggleView.swift; sourceTree = "<group>"; };
 		4B5B71D9266B405C00B22766 /* SearchResultDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		4B5B71DC266B425600B22766 /* SearchResultDefaultTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDefaultTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		4B5B71DF266B454900B22766 /* SearchResultSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -227,6 +233,7 @@
 				4BEB3E242662D72000DEF6A0 /* AlbumTrackCollectionViewCell.swift */,
 				4BEB3E2A26655A4200DEF6A0 /* GenreCollectionViewCell.swift */,
 				4BFE0A3F266D5D29004867BC /* PlayerControlsView.swift */,
+				4B4370EC267074E100821EDA /* LibraryToggleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +274,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4B4370E7267070DC00821EDA /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4B4370E8267070FD00821EDA /* LibraryPlaylistsViewController.swift */,
+				4B4370EA2670714600821EDA /* LibraryAlbumsViewController.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		4B5B71D8266B403B00B22766 /* SearchResultCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +316,7 @@
 		4BF298EE25FFA7AB008FB1A0 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				4B4370E7267070DC00821EDA /* Library */,
 				4BF298EF25FFA7EF008FB1A0 /* AuthViewController.swift */,
 				4BF298F225FFA7FC008FB1A0 /* WelcomeViewController.swift */,
 				4BF298F525FFA808008FB1A0 /* SettingsViewController.swift */,
@@ -446,6 +463,7 @@
 				4B248AEF266166580027C70A /* PlaylistDetailsResponse.swift in Sources */,
 				4BF2990E25FFA892008FB1A0 /* Playlist.swift in Sources */,
 				4BA850D3266923EA00E8F0A3 /* SearchResultResponse.swift in Sources */,
+				4B4370ED267074E100821EDA /* LibraryToggleView.swift in Sources */,
 				4BF2990525FFA85B008FB1A0 /* AuthManager.swift in Sources */,
 				4BD7A1AB260EF8D300CC1C82 /* NewReleasesCellViewModel.swift in Sources */,
 				4BEB3E282662D9C000DEF6A0 /* AlbumCollectionViewCellViewModel.swift in Sources */,
@@ -470,6 +488,7 @@
 				4B79916E2603B62F0013330B /* NewReleasesResponse.swift in Sources */,
 				4B5B71E0266B454900B22766 /* SearchResultSubtitleTableViewCell.swift in Sources */,
 				4BEB3E252662D72000DEF6A0 /* AlbumTrackCollectionViewCell.swift in Sources */,
+				4B4370EB2670714600821EDA /* LibraryAlbumsViewController.swift in Sources */,
 				4B79917B260412EE0013330B /* RecommendationsResponse.swift in Sources */,
 				4B7991712603BB090013330B /* APIImage.swift in Sources */,
 				4BF2991125FFA89D008FB1A0 /* AudioTrack.swift in Sources */,
@@ -489,6 +508,7 @@
 				4BA779A22601495000564D96 /* SettingsModels.swift in Sources */,
 				4BF298FF25FFA825008FB1A0 /* PlaylistViewController.swift in Sources */,
 				4B32C17525FDD01100F2865C /* SceneDelegate.swift in Sources */,
+				4B4370E9267070FD00821EDA /* LibraryPlaylistsViewController.swift in Sources */,
 				4B248AEC266156790027C70A /* AlbumDetailsResponse.swift in Sources */,
 				4BF298FC25FFA81C008FB1A0 /* PlayerViewController.swift in Sources */,
 				4BEB3E2E2666DD7800DEF6A0 /* AllCategoriesReponse.swift in Sources */,
