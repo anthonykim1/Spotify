@@ -151,10 +151,8 @@ extension LibraryPlaylistsViewController: UITableViewDelegate, UITableViewDataSo
         
         let vc = PlaylistViewController(playlist: playlist)
         vc.navigationItem.largeTitleDisplayMode = .never
-        
+        vc.isOwner = true // that way to ask can the user go ahead and edit it
         navigationController?.pushViewController(vc, animated: true)
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

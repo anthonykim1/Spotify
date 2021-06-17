@@ -7,10 +7,13 @@
 
 import UIKit
 
+// controller responsible for actually showing the playlist
 class PlaylistViewController: UIViewController {
     
     
     private let playlist: Playlist
+    
+    public var isOwner = false // default is false 
     
     private let collectionView = UICollectionView(frame: .zero,
                                                   collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { _, _ -> NSCollectionLayoutSection? in
@@ -94,7 +97,49 @@ class PlaylistViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
                                                             target: self,
-                                                            action: #selector(didTapShare))
+                                                            action: #selector(didTapShare)
+        )
+        // add gesture recognizer here
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func didLongPress(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else {
+            return
+        }
+        let touchPoint = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: touchPoint) else {
+            // the reason why its optional is bc you might tap and hold random place like the header
+            // but thats guarded
+            return
+        }
+        let trackToDelete = tracks[indexPath.row]
+        
+        // actionsheet or alert
+        let actionSheet = UIAlertController(title: trackToDelete.name,
+                                            message: "Would you like to remove this from the playlist?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+            APICaller.shared.removeTrackFromPlaylist(track: trackToDelete, playlist: strongSelf.playlist) { success in
+                if success {
+//                    print("Removed")
+                    // remove the track in the tracks collection and refresh the collectionview
+                    DispatchQueue.main.async {
+                        strongSelf.tracks.remove(at: indexPath.row)
+                        strongSelf.viewModels.remove(at: indexPath.row)
+                        strongSelf.collectionView.reloadData()
+                    }
+                } else {
+                    print("failed to remove")
+                }
+            }
+        }))
+        present(actionSheet, animated: true, completion: nil)
     }
     
     @objc private func didTapShare() {
@@ -155,6 +200,8 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         header.delegate = self
         return header
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
