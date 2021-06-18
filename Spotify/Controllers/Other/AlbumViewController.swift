@@ -74,6 +74,25 @@ class AlbumViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        fetchData()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapActions))
+    }
+    
+    @objc func didTapActions() {
+        let actionSheet = UIAlertController(title: album.name, message: "Actions", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Save Album", style: .default, handler: { [weak self] _ in
+            guard let strongSelf = self else {return}
+            APICaller.shared.saveAlbum(album: strongSelf.album) { success in
+                if success {
+                    NotificationCenter.default.post(name: .albumSavedNotification, object: nil)
+                }
+            }
+        }))
+        present(actionSheet, animated: true)
+    }
+    
+    func fetchData() {
         // as soon as viewdidload is called we arae going to start fetching data
         APICaller.shared.getAlbumDetails(for: album) { [weak self] result in
             DispatchQueue.main.async {
@@ -92,7 +111,6 @@ class AlbumViewController: UIViewController {
             }
         }
     }
-    
     
     // give the collection view a frame
     override func viewDidLayoutSubviews() {
