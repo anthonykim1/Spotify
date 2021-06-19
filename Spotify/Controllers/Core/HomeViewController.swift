@@ -328,6 +328,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     // once the user taps on one of the cell, we can reference model based on the position
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
         let section = sections[indexPath.section]
         switch section {
         case .featuredPlaylists:

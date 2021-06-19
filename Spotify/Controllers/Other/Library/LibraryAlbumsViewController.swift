@@ -123,6 +123,7 @@ extension LibraryAlbumsViewController: UITableViewDelegate, UITableViewDataSourc
     // lets bring in the delegate function for the tableview
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true) // unhighlight
+        HapticsManager.shared.vibrateForSelection()
         let album = albums[indexPath.row] // get the nth playlist
     
         let vc = AlbumViewController(album: album)
