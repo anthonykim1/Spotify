@@ -17,15 +17,15 @@ final class AuthManager {
     static let shared = AuthManager()
     
     private var refreshingToken = false
-    
+    /// ----
     struct Constants {
-        static let clientID = "a64e5ce183cb40aaacd59824b2da3e86"
-        static let clientSecret = "4a79a7fd2e4e48419e116af058568930" // normally want to keep it on backend server for security
-        static let tokenAPIURL = "https://accounts.spotify.com/api/token"
-        static let redirectURI = "https://www.iosacademy.io"
-        static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-library-modify%20user-library-read%20user-read-email"
+        static let clientID = Credentials.clientID
+        static let clientSecret = Credentials.clientSecret
+        static let tokenAPIURL = Credentials.tokenAPIURL
+        static let redirectURI = Credentials.redirectURI
+        static let scopes = Credentials.scopes
     }
-    
+    /// ----
     private init() {}
     
     public var signInURL: URL? {
@@ -38,6 +38,7 @@ final class AuthManager {
         return accessToken != nil // if its not equal to nil we know that the user is signed in
     }
     
+    // basically a bunch of get functions?
     private var accessToken: String? {
         return UserDefaults.standard.string(forKey: "access_token")
     }
