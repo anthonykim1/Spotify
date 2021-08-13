@@ -9,6 +9,8 @@ This project gets the data from Spotify's Web API (based on REST principles) tha
 Technology used: Xcode, Swift, CocoaPods, UIKit, SDWebImage, Appirater, Firebase/Analytics
 Below are some screenshots of the app
 ## 
+<img width="300" alt="Screen Shot 2021-08-13 at 6 04 46 PM" src="https://user-images.githubusercontent.com/62267334/129422587-f1b01ab5-fc91-46cd-9abd-24276b3c2d70.png">
+
 <img width="300" alt="Untitled" src="https://user-images.githubusercontent.com/62267334/129416335-a3586341-9c38-4a4c-877b-a59e1ee0144c.png">
 <img width="300" alt="Screen Shot 2021-08-13 at 4 46 24 PM" src="https://user-images.githubusercontent.com/62267334/129416751-ed61b273-b115-4eba-a7b4-dd61b81eb7dc.png">
 <img width="300" alt="Screen Shot 2021-08-13 at 4 47 22 PM" src="https://user-images.githubusercontent.com/62267334/129416830-61d23d33-a838-4421-bb91-f0fb8a564c44.png">
