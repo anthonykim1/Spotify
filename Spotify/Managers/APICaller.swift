@@ -441,6 +441,7 @@ final class APICaller {
         case PUT
     }
     
+    // MARK: - Create Request general method
     // generic request that every API request will be building on top of
     private func createRequest(with url: URL?,
                                type: HTTPMethod,
